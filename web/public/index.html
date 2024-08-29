@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Tier Node.js Web App</title>
+</head>
+<body>
+    <h1>Welcome to the Multi-Tier Node.js Web Application</h1>
+    <p>This is the web tier serving static content.</p>
+    <p>API Response from Application Tier:</p>
+    <pre id="api-response"></pre>
+
+    <script>
+        fetch('http://localhost:3000/api/data')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('api-response').textContent = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                document.getElementById('api-response').textContent = 'Error: ' + error;
+            });
+    </script>
+</body>
+</html>
